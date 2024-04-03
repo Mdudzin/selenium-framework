@@ -23,7 +23,7 @@ public abstract class BaseTest {
 
   @BeforeMethod
   public void setupDriver() {
-    initializeDriver();
+    createAndSetDriver();
     maximizeWindow();
     setGlobalWaitTime();
   }
@@ -35,7 +35,7 @@ public abstract class BaseTest {
     }
   }
 
-  private void initializeDriver() {
+  private void createAndSetDriver() {
     DriverFactory driverFactory = new DriverFactory();
     try {
       driver = driverFactory.createDriver(configReader);
