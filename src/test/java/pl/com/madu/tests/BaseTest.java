@@ -25,7 +25,7 @@ public abstract class BaseTest {
   public void setupDriver() {
     createAndSetDriver();
     maximizeWindow();
-    setGlobalWaitTime();
+    setGlobalWaitTime(WAIT_TIME);
   }
 
   @AfterMethod
@@ -44,8 +44,8 @@ public abstract class BaseTest {
     }
   }
 
-  private void setGlobalWaitTime() {
-    driver.manage().timeouts().implicitlyWait(WAIT_TIME);
+  private void setGlobalWaitTime(Duration time) {
+    driver.manage().timeouts().implicitlyWait(time);
   }
 
   private void maximizeWindow() {
