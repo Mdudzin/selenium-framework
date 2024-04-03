@@ -9,24 +9,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverWaitHelper {
 
-  private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(10);
+  private static final Duration WAIT_TIME = Duration.ofSeconds(10);
 
-  private static WebDriverWait getWebDriverWait(WebDriver driver) {
-    return new WebDriverWait(driver, DEFAULT_TIMEOUT);
+  private static WebDriverWait createWebDriverWait(WebDriver driver) {
+    return new WebDriverWait(driver, WAIT_TIME);
   }
 
   public static void waitForElementToExist(WebDriver driver, By locator) {
-    WebDriverWait wait = getWebDriverWait(driver);
+    WebDriverWait wait = createWebDriverWait(driver);
     wait.until(ExpectedConditions.presenceOfElementLocated(locator));
   }
 
   public static void waitForElementToBeVisible(WebDriver driver, WebElement webElement) {
-    WebDriverWait wait = getWebDriverWait(driver);
+    WebDriverWait wait = createWebDriverWait(driver);
     wait.until(ExpectedConditions.visibilityOf(webElement));
   }
 
   public static void waitForElementToBeClickable(WebDriver driver, WebElement webElement) {
-    WebDriverWait wait = getWebDriverWait(driver);
+    WebDriverWait wait = createWebDriverWait(driver);
     wait.until(ExpectedConditions.elementToBeClickable(webElement));
   }
 }
