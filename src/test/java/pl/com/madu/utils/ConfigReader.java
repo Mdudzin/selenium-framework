@@ -7,6 +7,7 @@ import java.util.Properties;
 import pl.com.madu.exceptions.WrongConfigurationPathException;
 
 public class ConfigReader {
+
   private final Properties properties;
 
   public ConfigReader(String configPath) throws WrongConfigurationPathException {

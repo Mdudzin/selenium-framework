@@ -11,6 +11,7 @@ import pl.com.madu.utils.ConfigReader;
 import pl.com.madu.utils.DriverFactory;
 
 public abstract class BaseTest {
+
   protected WebDriver driver;
   private ConfigReader configReader;
   private static final Duration WAIT_TIME = Duration.ofSeconds(10);
@@ -22,7 +23,7 @@ public abstract class BaseTest {
   }
 
   @BeforeMethod
-  public void setupDriver() {
+  public void startDriver() {
     createAndSetDriver();
     maximizeWindow();
     setGlobalWaitTime(WAIT_TIME);
