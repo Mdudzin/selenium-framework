@@ -6,17 +6,17 @@ import java.io.IOException;
 import java.util.Properties;
 import pl.com.madu.exceptions.WrongConfigurationPathException;
 
-public class ConfigReader {
+public class ConfigurationReader {
 
   private final Properties properties;
 
-  public ConfigReader(String configPath) throws WrongConfigurationPathException {
+  public ConfigurationReader(String configurationPath) throws WrongConfigurationPathException {
     this.properties = new Properties();
-    readConfigurationFromFile(configPath);
+    readConfigurationFromFile(configurationPath);
   }
 
-  private void readConfigurationFromFile(String configPath) throws WrongConfigurationPathException {
-    try (BufferedReader reader = new BufferedReader(new FileReader(configPath))) {
+  private void readConfigurationFromFile(String configurationPath) throws WrongConfigurationPathException {
+    try (BufferedReader reader = new BufferedReader(new FileReader(configurationPath))) {
       properties.load(reader);
     } catch (IOException e) {
       throw new WrongConfigurationPathException();

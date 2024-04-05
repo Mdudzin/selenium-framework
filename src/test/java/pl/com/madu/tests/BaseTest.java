@@ -7,19 +7,19 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pl.com.madu.exceptions.NoSuchBrowserException;
 import pl.com.madu.exceptions.WrongConfigurationPathException;
-import pl.com.madu.utils.ConfigReader;
+import pl.com.madu.utils.ConfigurationReader;
 import pl.com.madu.utils.DriverFactory;
 
 public abstract class BaseTest {
 
   protected WebDriver driver;
-  private ConfigReader configReader;
+  private ConfigurationReader configReader;
   private static final Duration WAIT_TIME = Duration.ofSeconds(10);
   private static final String CONFIG_PATH = "src/test/resources/configuration.properties";
 
   @BeforeClass
   public void loadConfig() throws WrongConfigurationPathException {
-    configReader = new ConfigReader(CONFIG_PATH);
+    configReader = new ConfigurationReader(CONFIG_PATH);
   }
 
   @BeforeMethod

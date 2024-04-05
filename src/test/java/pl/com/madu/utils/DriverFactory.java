@@ -9,7 +9,7 @@ import pl.com.madu.exceptions.NoSuchBrowserException;
 
 public class DriverFactory {
 
-  public WebDriver createDriver(ConfigReader configReader) throws NoSuchBrowserException {
+  public WebDriver createDriver(ConfigurationReader configReader) throws NoSuchBrowserException {
     String browser = configReader.getBrowser();
 
     switch (browser) {
@@ -23,7 +23,7 @@ public class DriverFactory {
     }
   }
 
-  private WebDriver createChromeDriver(ConfigReader configReader) {
+  private WebDriver createChromeDriver(ConfigurationReader configReader) {
     boolean isHeadless = Boolean.parseBoolean(configReader.getHeadless());
 
     if (isHeadless) {
@@ -33,7 +33,7 @@ public class DriverFactory {
     }
   }
 
-  private WebDriver createEdgeDriver(ConfigReader configReader) {
+  private WebDriver createEdgeDriver(ConfigurationReader configReader) {
     boolean isHeadless = Boolean.parseBoolean(configReader.getHeadless());
 
     if (isHeadless) {
