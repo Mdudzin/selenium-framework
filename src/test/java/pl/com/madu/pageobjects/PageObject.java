@@ -11,4 +11,6 @@ public abstract class PageObject {
     this.driver = driver;
     PageFactory.initElements(driver, this);
   }
+
+  public abstract PageObject goToPage(String page);
 }
