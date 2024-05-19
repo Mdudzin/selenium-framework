@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Check pwd') {
             steps {
-                bat 'pwd'
+                sh 'pwd'
             }
         }
         stage('Checkout') {
@@ -16,12 +16,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'mvn compile'
+                sh 'mvn compile'
             }
         }
         stage('Test') {
             steps {
-                bat 'mvn test'
+                sh 'mvn test'
             }
         }
 //        stage('Deploy') {
