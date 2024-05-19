@@ -45,11 +45,11 @@ public abstract class BaseTest {
     }
   }
 
-  private void setGlobalWaitTime(Duration time) {
-    driver.manage().timeouts().implicitlyWait(time);
-  }
-
   private void maximizeWindow() {
     driver.manage().window().maximize();
+  }
+
+  private void setGlobalWaitTime(Duration time) {
+    driver.manage().timeouts().implicitlyWait(time);
   }
 }
