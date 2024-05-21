@@ -4,11 +4,11 @@ pipeline {
         skipDefaultCheckout(true)
     }
     stages {
-        stage('Check pwd') {
-            steps {
-                bat 'pwd'
-            }
-        }
+//        stage('Check pwd') {
+//            steps {
+//                bat 'pwd'
+//            }
+//        }
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Mdudzin/selenium-framework.git'
