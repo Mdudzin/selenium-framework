@@ -4,11 +4,6 @@ pipeline {
         skipDefaultCheckout(true)
     }
     stages {
-//        stage('Check pwd') {
-//            steps {
-//                bat 'pwd'
-//            }
-//        }
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Mdudzin/selenium-framework.git'
@@ -16,7 +11,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'mvn compile'
+                bat 'mvn clean compile'
             }
         }
         stage('Test') {
@@ -24,19 +19,19 @@ pipeline {
                 bat 'mvn test'
             }
         }
-//        stage('Deploy') {
-//            steps {
-//                bat 'mvn jar:jar deploy:deploy'
-//            }
-//        }
-        stage('Generate Report') {
-            steps {
-                allure([
-                        includeProperties: false,
-                        reportBuildPolicy: 'ALWAYS',
-                        results          : [[path: 'target/allure-results']]
-                ])
-            }
+    }
+    post {
+        always {
+            allure(
+                    includeProperties: false,
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']]
+            )
+            recordCoverage(
+                    tools: [[parser: 'JACOCO']],
+                    id: 'jacoco', name: 'JaCoCo Coverage',
+                    sourceCodeRetention: 'EVERY_BUILD',
+            )
         }
     }
 }
